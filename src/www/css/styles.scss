@@ -1,6 +1,167 @@
+@import 'colors';
+
 body {
-	margin: 0;
+	margin: 15px;
 	padding: 0;
 	font-size: 100%;
 	color:black;
+
+	font-family: 'Roboto', sans-serif;
+
+  // cars component -------
+  // ----------------------
+
+  /*
+  .car-content {
+    display: flex;
+    flex-wrap: nowrap;
+    .carsList {
+      flex: 1 0 auto
+    }
+    .carsForm {
+      padding-left: 15px;
+      min-width: 250px;
+    }
+  }
+  */
+
+	.table-header {
+		color: $clr-blue-700;
+    border-bottom: 1px solid $clr-blue-600;
+    margin-bottom: 0;
+	}
+  h3 {
+    border-bottom: 1px solid $clr-blue-500;
+  }
+
+	table {
+		width: 100%;
+		border-collapse: collapse;
+		th {
+			border-bottom: 2px solid $clr-blue-500;
+      border-left: 1px solid $clr-grey-300;
+      border-right: 1px solid $clr-grey-300;
+      background-color: $clr-grey-300;
+		}
+		th, td {
+			text-align: left;
+			padding: 5px;
+		}
+    tr:nth-child(odd) {
+      background-color: $clr-grey-100;
+    }
+		td {
+			border: 1px solid $clr-grey-300;
+      //width: 20%;
+      input {
+        width: 95%;
+        height: 100%;
+      }
+      input[type="checkbox"] {
+        width: 25px;
+        margin: 0;
+      }
+      button {
+        padding: 5px;
+        width: 100%;
+        &.edit {
+          background-color: $clr-orange-500;
+          &:hover {
+            background-color: darken($clr-orange-500,15%);
+          }
+        }
+        &.save {
+          background-color: $clr-blue-500;
+          &:hover {
+            background-color: darken($clr-blue-500,15%);
+          }
+        }
+      }
+		}
+		tbody > tr:hover {
+			background-color: $clr-grey-200;
+		}
+	}
+
+  .carsForm {
+    h3 {
+      margin-bottom: 5px;
+      // max-width: 250px;
+    }
+  }
+  form {
+    .formControl {
+      display: flex;
+      flex-wrap: nowrap;
+      margin-bottom: 5px;
+      label {
+        flex: 0 1 auto;
+      }
+      input {
+        flex: 1 0 auto;
+      }
+    }
+    label {
+      width: 50px;
+      padding: 5px 5px 5px 0;
+      display: inline-block;
+    }
+  }
+
+  button {
+    background-color: $clr-grey-200;
+    border: 1px solid $clr-grey-300;
+    border-radius: 4px;
+    font-size: 1em;
+    padding: 8px;
+    transition: background-color 0.2s;
+    cursor: pointer;
+    &:hover {
+      background-color: $clr-grey-400;
+    }
+  }
+
+  // end cars component ---
+  // ----------------------
+
+	.colors-header {
+		text-shadow: 1px 1px 0px $clr-red-500,
+                 2px 2px 0px $clr-blue-500,
+                 3px 3px 0px $clr-green-500,
+                 4px 4px 0px $clr-yellow-500;
+	}
+
+  input {
+    border: none;
+    border-bottom: 1px solid $clr-blue-600;
+    font-size: 1em;
+    &:focus {
+      outline: none;
+      border-bottom: 1px solid $clr-green-700;
+    }
+    &:invalid {
+      border-bottom: 1px solid $clr-red-700;
+    }
+  }
+  input, select {
+    padding: 0;
+    margin: 5px 0 5px 5px;
+  }
+
+	.colors-grid {
+		display: flex;
+		flex-wrap: wrap;
+		.colors-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+			min-width: 180px;
+			height: 3em;
+      margin: 2px;
+      &:hover {
+        color: $clr-grey-500;
+      }
+		}
+	}
+
 }
