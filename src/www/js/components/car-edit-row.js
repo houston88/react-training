@@ -16,7 +16,17 @@ export class CarEditRow extends BaseComponent {
   }
 
   save() {
-    this.props.onSave(this.state);
+    fetch('http://localhost:3010/cars/'+this.state.id, {
+      method: 'PUT',
+      headers: new Headers({'Content-Type':'application/json'}),
+      body: JSON.stringify(this.state)
+    })
+    .then(res => res.json())
+    .then(results => {
+      console.log('Put (updates) new car... ' + results);
+      // succes, send up the chain
+      this.props.onSave(results);
+    });
   }
 
   // use this along with ref to do a focus

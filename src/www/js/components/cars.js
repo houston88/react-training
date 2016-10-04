@@ -9,7 +9,7 @@ export class Cars extends React.Component {
     super(props);
     this.baseId = 10;
     this.state = {
-      cars: this.props.cars.concat(),
+      cars: [],
       selectedCarIds: []
     };
     // bind once
@@ -19,11 +19,33 @@ export class Cars extends React.Component {
     this.deleteSelected = this.deleteSelected.bind(this);
   }
 
+  loadData() {
+    fetch('http://localhost:3010/cars').then(res => res.json())
+      .then(cars => {
+        console.log(cars);
+        this.setState({
+          cars: cars
+        });
+      });
+  }
+
+  componentDidMount() {
+    this.loadData();
+  }
+
+  /* If we wanted to pass props in again
+  componentWillReceiveProps(nextProps) {
+    this.setState({
+      cars: nextProps.cars
+    });
+  }
+  */
+
   // add car to state cars array
   addCar(car) {
-    // increment id and set
-    this.baseId += 1;
-    car.id = this.baseId;
+    // OBE: increment id and set
+    //this.baseId += 1;
+    //car.id = this.baseId;
     // set state
     this.setState({
       cars: this.state.cars.concat(car)
@@ -62,6 +84,29 @@ export class Cars extends React.Component {
   deleteSelected() {
     // remove selected carIds from our state
     let newCarList = [];
+    let numToDelete = this.state.selectedCarIds.length;
+
+    for (let i=0; i<this.state.selectedCarIds.length; i++) {
+      let toDeleteId = this.state.selectedCarIds[i];
+      fetch('http://localhost:3010/cars/'+toDeleteId, {
+        method: 'DELETE',
+        headers: new Headers({'Content-Type':'application/json'})
+      })
+      .then(res => {
+        // success... Ideally would keep track of succesfully deleteSelected
+        // and then just get from rest resource when done.
+        numToDelete -= 1;
+        console.log('Num left to delete: ' + numToDelete);
+        if (numToDelete === 0) {
+          this.setState({
+            selectedCarIds: []
+          });
+          this.loadData();
+        }
+      });
+    }
+
+    /*
     for (let y=0; y<this.state.cars.length; y++) {
       // ensure not in delete id list
       if (this.state.selectedCarIds.indexOf(this.state.cars[y].id) == -1) {
@@ -73,6 +118,8 @@ export class Cars extends React.Component {
       cars: newCarList,
       selectedCarIds: []
     });
+    */
+
   }
 
 	render() {
@@ -93,12 +140,5 @@ export class Cars extends React.Component {
 }
 
 Cars.propTypes = {
-  cars: React.PropTypes.arrayOf(React.PropTypes.shape({
-      id: React.PropTypes.number.isRequired,
-      make: React.PropTypes.string.isRequired,
-      mode: React.PropTypes.string,
-      year: React.PropTypes.number,
-      color: React.PropTypes.string
-    })).isRequired,
   colors: React.PropTypes.array
 };

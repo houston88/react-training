@@ -18,14 +18,25 @@ export class CarsForm extends BaseComponent {
 
   // add car to state cars array
   addCar(e) {
-    this.props.onAdd(this.state);
-    // clear form
-    this.setState({
-      make: '',
-      model: '',
-      year: 2016,
-      color: ''
+    // post to db
+    fetch('http://localhost:3010/cars', {
+      method: 'POST',
+      headers: new Headers({'Content-Type':'application/json'}),
+      body: JSON.stringify(this.state)
+    })
+    .then(res => res.json())
+    .then(results => {
+      console.log('Posted new car... ', results);
+      this.props.onAdd(results);
+      // clear form
+      this.setState({
+        make: '',
+        model: '',
+        year: 2016,
+        color: this.props.colors.concat()[0]
+      });
     });
+
   }
 
   // to dangerously set inner html. Do not do this! In elem:
@@ -58,7 +69,7 @@ export class CarsForm extends BaseComponent {
         </div>
         <div className="formControl">
           <label htmlFor="new-color">Color:</label>
-          <select id="new-color" name="color" onChange={this.onChange}>
+          <select id="new-color" name="color" value={this.state.color} onChange={this.onChange}>
             {this.props.colors.map(color =>
               <option key={color} value={color}>
                 {color}

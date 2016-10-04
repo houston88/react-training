@@ -1,4 +1,41 @@
 {
+  "cars": [
+    {
+      "id": 1,
+      "make": "VW",
+      "model": "Golf TDI",
+      "year": 2011,
+      "color": "silver"
+    },
+    {
+      "id": 3,
+      "make": "Tesla",
+      "model": "Model S",
+      "year": 2015,
+      "color": "red"
+    },
+    {
+      "make": "Toyota",
+      "model": "Supra",
+      "year": 2005,
+      "color": "aqua",
+      "id": 7
+    },
+    {
+      "make": "Chevy",
+      "model": "Malibu",
+      "year": 2015,
+      "color": "skyblue",
+      "id": 8
+    },
+    {
+      "make": "Chrysler",
+      "model": "Town & Country",
+      "year": 2014,
+      "color": "blue",
+      "id": 9
+    }
+  ],
   "owners": [
     {
       "id": 1,
