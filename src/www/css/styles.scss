@@ -1,4 +1,5 @@
 @import 'colors';
+@import 'icons';
 
 body {
 	margin: 15px;
@@ -65,15 +66,17 @@ body {
         padding: 5px;
         width: 100%;
         &.edit {
-          background-color: $clr-orange-500;
+          background-color: $clr-orange-800;
+          color: #fff;
           &:hover {
-            background-color: darken($clr-orange-500,15%);
+            background-color: darken($clr-orange-800,15%);
           }
         }
         &.save {
-          background-color: $clr-blue-500;
+          background-color: $clr-blue-800;
+          color: #fff;
           &:hover {
-            background-color: darken($clr-blue-500,15%);
+            background-color: darken($clr-blue-800,15%);
           }
         }
       }
@@ -111,9 +114,11 @@ body {
   button {
     background-color: $clr-grey-200;
     border: 1px solid $clr-grey-300;
+    color: $clr-blue-700;
     border-radius: 4px;
-    font-size: 1em;
-    padding: 8px;
+    outline: 0;
+    font-size: 0.8em;
+    padding: 6px 12px;
     transition: background-color 0.2s;
     cursor: pointer;
     &:hover {
@@ -163,5 +168,11 @@ body {
       }
 		}
 	}
+
+  .calc {
+    button {
+      margin-right: 2px;
+    }
+  }
 
 }

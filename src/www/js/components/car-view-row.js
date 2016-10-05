@@ -33,7 +33,11 @@ export class CarViewRow extends React.Component {
         <td>{this.props.car.model}</td>
         <td>{this.props.car.year}</td>
         <td style={{color:this.props.car.color}}>{this.props.car.color}</td>
-        <td><button type='button' onClick={this.editMode} className='edit'>Edit</button></td>
+        <td>
+          <button type='button' onClick={this.editMode} className='edit'>
+            <span className="icon icon-bin2"></span> Edit
+          </button>
+        </td>
       </tr>
     );
 	}

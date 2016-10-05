@@ -66,7 +66,11 @@ export class CarEditRow extends BaseComponent {
             )}
           </select>
         </td>
-        <td><button type='button' onClick={this.save} className='save'>Save</button></td>
+        <td>
+          <button type='button' onClick={this.save} className='save'>
+            <span className="icon icon-save2"></span> Save
+          </button>
+        </td>
       </tr>
     );
 	}

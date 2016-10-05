@@ -26,7 +26,7 @@ export class CarsList extends React.Component {
         <table>
           <thead>
             <tr>
-              <th style={{width:'25px'}}></th>
+              <th style={{width:'25px',textAlign:'center'}}></th>
               <th>Make</th>
               <th>Model</th>
               <th>Year</th>

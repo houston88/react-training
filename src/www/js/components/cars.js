@@ -22,7 +22,7 @@ export class Cars extends React.Component {
   loadData() {
     fetch('http://localhost:3010/cars').then(res => res.json())
       .then(cars => {
-        console.log(cars);
+        // console.log(cars);
         this.setState({
           cars: cars
         });
@@ -130,7 +130,7 @@ export class Cars extends React.Component {
           onChecked={this.onChecked} />
         <br/>
         {this.state.selectedCarIds.length
-          ? <button type="button" onClick={this.deleteSelected}>Delete Selected</button>
+          ? <button type="button" onClick={this.deleteSelected}><span className="icon icon-bin2"></span> Delete Selected</button>
           : <span></span>}
         <CarsForm onAdd={this.addCar} colors={this.props.colors} />
       </div>

@@ -77,7 +77,9 @@ export class CarsForm extends BaseComponent {
             )}
           </select>
         </div>
-        <button type="button" onClick={this.addCar}>Add Car</button>
+        <button type="button" onClick={this.addCar}>
+          <span className="icon icon-plus"></span> Add Car
+        </button>
       </form>
     );
 	}
